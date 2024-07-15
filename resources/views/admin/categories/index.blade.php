@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <a href="{{route('categories.create')}}">
+    <a href="{{route('admin.categories.create')}}">
         <button class="btn btn-success">Tạo mới</button>
     </a>
     @if (session('message'))
@@ -24,16 +24,23 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
-                    <td>{{$item->cover}}</td>
-                    <td>{{$item->is_active}}</td>
                     <td>
-                        <a href="{{route('categories.show', $item)}}">
+                        <div style="width: 100px; height: 100px;">
+                            <img src="{{Storage::url($item->cover)}}" style="max-width: 100%; max-height: 100%;" alt="">
+                        </div>
+                    </td>
+                    <td>
+                        {!! $item->is_active ? '<span class="badge bg-success"> Hoạt động </span>' :
+                            ' <span class="badge bg-danger"> Không hoạt động </span>'!!}
+                    </td>
+                    <td>
+                        <a href="{{route('admin.categories.show', $item)}}">
                             <button class="btn btn-success">Xem</button>
                         </a>
-                        <a href="{{route('categories.edit', $item)}}">
+                        <a href="{{route('admin.categories.edit', $item)}}">
                             <button class="btn btn-warning">Sửa</button>
                         </a>
-                        <form action="{{route('categories.destroy', $item)}}" method="POST">
+                        <form action="{{route('admin.categories.destroy', $item)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Xóa</button>
