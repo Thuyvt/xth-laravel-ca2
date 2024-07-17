@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('sku')->unique();
+            $table->foreignIdFor(\App\Models\Category::class)->constrained();
+            $table->string('img_thumb')->nullable();
+            $table->float('price');
+            $table->float('price_sale')->nullable();
+            $table->text('material')->nullable();
+            $table->text('description')->nullable();
+            $table->text('use_manual')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_best_sale')->default(false);
+            $table->boolean('is_40_sale')->default(false);
+            $table->boolean('is_hot_online')->default(false);
             $table->timestamps();
         });
     }

@@ -9,12 +9,14 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    const PATH_VIEW = 'admin.products.';
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data = Product::query()->get();
+        return view(self::PATH_VIEW.__FUNCTION__, compact('data'));
     }
 
     /**
@@ -22,7 +24,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view(self::PATH_VIEW.__FUNCTION__);
+
     }
 
     /**
@@ -38,7 +41,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view(self::PATH_VIEW.__FUNCTION__, compact('product'));
     }
 
     /**
@@ -46,7 +49,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view(self::PATH_VIEW.__FUNCTION__, compact('product'));
     }
 
     /**
