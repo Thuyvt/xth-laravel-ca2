@@ -24,7 +24,6 @@
     <meta name="theme-name" content="reader" />
 
     <!-- plugins -->
-    <link rel="stylesheet" href="{{asset('theme/client/plugins/bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('theme/client/plugins/themify-icons/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('theme/client/plugins/slick/slick.css')}}">
 
@@ -40,6 +39,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="" />
     <meta property="og:updated_time" content="2020-03-15T15:40:24+06:00" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="antialiased">
 <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">

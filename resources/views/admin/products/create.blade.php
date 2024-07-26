@@ -42,18 +42,18 @@
                         <div class="collapse show" id="collapseProductInfo">
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="product-title-input" class="form-label">Tên</label>
-                                    <input type="text" class="form-control" id="product-title-input" name="name"
+                                    <label class="form-label">Tên</label>
+                                    <input type="text" class="form-control"  name="name"
+                                           placeholder="Nhaập giá">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Giá</label>
+                                    <input type="text" class="form-control" name="price"
                                            placeholder="Enter product title">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="product-title-input" class="form-label">Giá</label>
-                                    <input type="text" class="form-control" id="product-title-input" name="price"
-                                           placeholder="Enter product title">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="product-title-input" class="form-label">Giá</label>
-                                    <input type="text" class="form-control" id="product-title-input" name="price_sale"
+                                    <label class="form-label">Giá giảm</label>
+                                    <input type="text" class="form-control"  name="price_sale"
                                            placeholder="Enter product title">
                                 </div>
                                 <div class="mb-3">
@@ -172,7 +172,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @php $amount = 5;@endphp
+                                        @php $amount = 2;@endphp
                                         @for($index = 1; $index <= $amount; $index++)
                                             <tr>
                                                 <td>
