@@ -6,14 +6,37 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\ProductVariant;
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     //
 
-    public function list() {}
+    public function list() {
+        // Lấy thông tin user đăng nhập
+        // $user = Auth::user();
+        // Tamj thời laasy user đầu tiên
+        $user = User::query()->first();
+
+        // thông tin cart
+        $cart = Cart::query()->where('user_id', $user->id)->first();
+        $totalAmount = 0 ;
+        $productVariants = $cart->cartItems()
+        ->join('product_variants', 'product_variants.id', '=' ,'cart_items.product_variant_id')
+        ->join('products', 'products.id', '=', 'product_variants.product_id')
+        ->join('product_sizes', 'product_sizes.id' , '=', 'product_variants.product_size_id')
+        ->join('product_colors', 'product_colors.id' , '=', 'product_variants.product_color_id')
+        ->get(['product_variants.id as product_variant_id', 'products.name as product_name',
+            'products.sku as product_sku', 'products.img_thumb as product_img_thumb',
+            'products.price as product_price', 'products.price_sale as product_price_sale',
+            'product_sizes.name as variant_size_name', 'product_colors.name as variant_color_name',
+            'cart_items.quantity as quantity']);
+
+//        dd($productVariants->toArray());
+        return view('cart', compact('totalAmount', 'productVariants'));
+
+    }
 
     public function add(Request $request)
     {
