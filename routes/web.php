@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $products = Product::query()->latest('id')->with('category')->limit(30)->get();
     return view('welcome',compact('products'));
-});
+})->name('welcome');
 
 // CHi tiết sản phẩm
 Route::get('product/{slug}', [\App\Http\Controllers\ProductController::class, 'detail'])
@@ -26,5 +26,5 @@ Route::get('product/{slug}', [\App\Http\Controllers\ProductController::class, 'd
 // Mua hàng
 Route::post('cart/add', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
 Route::get('cart/list', [\App\Http\Controllers\CartController::class, 'list'])->name('cart.list');
-Route::post('order/add', [\App\Http\Controllers\CartController::class, 'add'])->name('order.add');
+Route::post('order/add', [\App\Http\Controllers\OrderController::class, 'add'])->name('order.add');
 

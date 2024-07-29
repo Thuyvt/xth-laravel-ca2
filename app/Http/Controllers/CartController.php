@@ -34,7 +34,11 @@ class CartController extends Controller
             'cart_items.quantity as quantity']);
 
 //        dd($productVariants->toArray());
-        return view('cart', compact('totalAmount', 'productVariants'));
+        foreach (collect($productVariants) as $item) {
+            $totalAmount += $item['quantity'] * ($item['product_price_sale'] ?: $item['product_price']);
+        }
+        $userId = $cart->user_id;
+        return view('cart', compact('totalAmount', 'productVariants', 'userId'));
 
     }
 
